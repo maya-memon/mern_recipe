@@ -6,13 +6,12 @@ import recipeRouter from "./routes/recipe.js";
 import cors from "cors";
 const app = express(); 
 
-app.use(bodyParser.json());
+app.use(express.json()); // instead of bodyParser
 app.use(cors({
-  origin:true,
-  methods:["GET","POST","PUT","DELETE"],
-  credentials:true
- 
-}))
+  origin: "https://recipe-food1.netlify.app", // your frontend
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true
+}));
 
 app.use("/api",userRouter);
 app.use("/api",recipeRouter);
